@@ -9,7 +9,7 @@ export const Board = () => {
 
   useEffect(() => {
     // fetch('http://localhost:8000/tasks')
-    fetch('https://workshop-mate.vercel.app/tasks')
+    fetch('http://localhost:8000/tasks')
       .then(response => response.json())
       .then(data => {
         setTasks(data)
@@ -17,7 +17,7 @@ export const Board = () => {
   }, [])
 
   const handleDelete = async (id) => {
-    await fetch('https://workshop-mate.vercel.app/tasks/' + id, {
+    await fetch('http://localhost:8000/tasks' + id, {
       method: 'DELETE'
     })
     const newTasks = tasks.filter(task => task.id != id)

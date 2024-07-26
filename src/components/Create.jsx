@@ -17,7 +17,7 @@ export const Create = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        fetch('https://workshop-mate.vercel.app/tasks', {
+        fetch('http://localhost:8000/tasks', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ title, description, status })
