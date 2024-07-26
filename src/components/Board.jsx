@@ -8,7 +8,8 @@ export const Board = () => {
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/tasks')
+    // fetch('http://localhost:8000/tasks')
+    fetch('https://workshop-mate-o7v7fvomj-valdimars-projects.vercel.app/tasks')
       .then(response => response.json())
       .then(data => {
         setTasks(data)
@@ -16,7 +17,7 @@ export const Board = () => {
   }, [])
 
   const handleDelete = async (id) => {
-    await fetch('http://localhost:8000/tasks/' + id, {
+    await fetch('https://workshop-mate-o7v7fvomj-valdimars-projects.vercel.app/tasks/' + id, {
       method: 'DELETE'
     })
     const newTasks = tasks.filter(task => task.id != id)
