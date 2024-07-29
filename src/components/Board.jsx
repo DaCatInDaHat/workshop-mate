@@ -26,19 +26,14 @@ export const Board = () => {
   //---------------------------------------------------------
 
   useEffect(() => {
-    fetch('https://api.jsonbin.io/v3/b/66a6da24acd3cb34a86ca4a7', {
-      method: 'GET',
-      headers: { 'X-Master-Key': '$2a$10$i9jlMLgjC79zhdPTS9ayh.lm/oB0QY.FR8KLYMxcqBv8sey8QRE9i' }
-    })
+    fetch('https://workshop-mate-db.onrender.com/tasks')
       .then(response => response.json())
-      .then(data => setTasks(data.record.tasks)
-      )
+      .then(data => setTasks(data))
   }, [])
 
   const handleDelete = async (id) => {
-    await fetch('https://api.jsonbin.io/v3/b/66a6da24acd3cb34a86ca4a7' + id, {
-      method: 'DELETE',
-      headers: { 'X-Master-Key': '$2a$10$i9jlMLgjC79zhdPTS9ayh.lm/oB0QY.FR8KLYMxcqBv8sey8QRE9i' }
+    await fetch('https://workshop-mate-db.onrender.com/tasks/' + id, {
+      method: 'DELETE'
     })
     const newTasks = tasks.filter(task => task.id != id)
     setTasks(newTasks)
