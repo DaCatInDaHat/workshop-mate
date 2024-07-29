@@ -6,7 +6,7 @@ export const Panel = () => {
         <Button
             variant='outlined'
             sx={{ m: 1 }}
-            href='./create'
+            href='/create'
         >
             Create
         </Button>
