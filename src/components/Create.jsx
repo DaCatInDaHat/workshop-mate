@@ -9,18 +9,29 @@ import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 export const Create = () => {
-
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [status, setStatus] = useState('active')
     const navigateTo = useNavigate()
 
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     fetch('http://localhost:8000/tasks', {
+    //         method: 'POST',
+    //         headers: { "Content-type": "application/json" },
+    //         body: JSON.stringify({ title, description, status })
+    //     }).then(() => { navigateTo('/') })
+    // }
+
     const handleSubmit = e => {
         e.preventDefault()
-        fetch('http://localhost:8000/tasks', {
-            method: 'POST',
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify({ title, description, status })
+        fetch('https://api.jsonbin.io/v3/b/66a6da24acd3cb34a86ca4a7', {
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json",
+                'X-Master-Key': '$2a$10$i9jlMLgjC79zhdPTS9ayh.lm/oB0QY.FR8KLYMxcqBv8sey8QRE9i'
+            },
+            body: JSON.stringify({ tasks: { title, description, status } })
         }).then(() => { navigateTo('/') })
     }
 
