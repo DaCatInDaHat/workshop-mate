@@ -7,22 +7,28 @@ import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
-import { ListItemButton } from '@mui/material'
+import { ListItemButton, ListItemIcon } from '@mui/material'
+import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined'
+import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
+import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined'
 
 const drawerWidth = 240
 
 const menuItems = [
     {
         text: 'Board',
-        path: '/'
+        path: '/',
+        icon: <BallotOutlinedIcon />
     },
     {
         text: 'Contacts',
-        path: '/contacts'
+        path: '/contacts',
+        icon: <PeopleOutlinedIcon />
     },
     {
         text: 'Storage',
-        path: '/storage'
+        path: '/storage',
+        icon: <WarehouseOutlinedIcon />
     }
 ]
 
@@ -53,6 +59,7 @@ export const Layout = ({ children }) => {
                         {menuItems.map(item => (
                             <ListItem key={item.text}>
                                 <ListItemButton component="a" href={item.path}>
+                                    <ListItemIcon>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.text} />
                                 </ListItemButton>
                             </ListItem>
