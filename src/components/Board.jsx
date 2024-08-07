@@ -25,10 +25,21 @@ export const Board = () => {
 
   //---------------------------------------------------------
 
+  // useEffect(() => {
+  //   fetch('https://workshop-mate-db.onrender.com/tasks')
+  //     .then(response => response.json())
+  //     .then(data => setTasks(data))
+  // }, [])
+
   useEffect(() => {
-    fetch('https://workshop-mate-db.onrender.com/tasks')
-      .then(response => response.json())
-      .then(data => setTasks(data))
+    const fetchTasks = async () => {
+      const response = await fetch('https://workshop-mate-db.onrender.com/tasks')
+      const json = await response.json()
+
+      if (response.ok) setTasks(json)
+    }
+
+    fetchTasks()
   }, [])
 
   const handleDelete = async (id) => {
