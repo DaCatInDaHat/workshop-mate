@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import AppBar from '@mui/material/AppBar'
@@ -13,6 +13,8 @@ import MenuIcon from '@mui/icons-material/Menu'
 import BallotOutlinedIcon from '@mui/icons-material/BallotOutlined'
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
 import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 const drawerWidth = 240
 
@@ -34,7 +36,7 @@ const menuItems = [
     }
 ]
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, mode, setMode }) => {
     const [mobileOpen, setMobileOpen] = useState(false)
     const [isClosing, setIsClosing] = useState(false)
 
@@ -51,6 +53,10 @@ export const Layout = ({ children }) => {
         if (!isClosing) {
             setMobileOpen(!mobileOpen)
         }
+    }
+
+    const handleChangeMode = () => {
+        mode === 'dark' ? setMode('light') : setMode('dark')
     }
 
     const drawer = (
@@ -82,6 +88,9 @@ export const Layout = ({ children }) => {
                     <Typography variant="h6" noWrap component="div">
                         {document.title}
                     </Typography>
+                    <IconButton onClick={handleChangeMode}>
+                        {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Box

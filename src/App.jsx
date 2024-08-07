@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Board } from './components/Board'
 import { Contacts } from './components/Contacts'
@@ -8,19 +8,21 @@ import { Create } from './components/Create'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark'
-  }
-})
-
 export const App = () => {
+  const [mode, setMode] = useState('dark')
+
+  const appTheme = createTheme({
+    palette: {
+      mode: mode === 'light' ? 'dark' : 'light'
+    }
+  })
+
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={appTheme}>
         <CssBaseline />
         <Router>
-          <Layout>
+          <Layout mode={mode} setMode={setMode}>
             <Routes>
               <Route exact path='/' element={<Board />} />
               <Route path='/contacts' element={<Contacts />} />
